@@ -3,3 +3,6 @@ language: objective-c
 xcode_project: HelloWorld/HelloWorld.xcodeproj # path to your xcodeproj folder
 xcode_scheme: HelloWorld
 
+script:
+  xctool -project $xcode_project -scheme $xcode_scheme build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
