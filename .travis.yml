@@ -3,6 +3,9 @@ language: objective-c
 osx_image: xcode7.3
 before_script: cd HelloWorld
 
+notifications:
+  email: false
+
 script:
   - set -o pipefail &&
       xcodebuild
