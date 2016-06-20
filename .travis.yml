@@ -14,7 +14,8 @@ script:
         -scheme "HelloWorld"
         clean build test |
         xcpretty
-    - set -o pipefail &&
+        
+  - set -o pipefail &&
       xcodebuild
         CODE_SIGNING_REQUIRED=NO
         CODE_SIGN_IDENTITY=
