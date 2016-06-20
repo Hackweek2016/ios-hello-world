@@ -1,6 +1,9 @@
 machine:
   xcode:
     version: 7.3
+general:
+  build_dir: HelloWorld
+
 test:
   override:
     - set -o pipefail &&
@@ -11,7 +14,6 @@ test:
         -sdk iphonesimulator
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         -scheme "HelloWorld"
-        -project "HelloWorld"
         clean build test |
         tee $CIRCLE_ARTIFACTS/xcode_raw.log |
         xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
@@ -23,7 +25,6 @@ test:
         -sdk iphonesimulator
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         -scheme "HelloWorld - Suite Two"
-        -project "HelloWorld"
         clean build test |
       tee $CIRCLE_ARTIFACTS/xcode_raw.log |
       xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results_two.xml
