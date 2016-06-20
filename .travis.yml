@@ -6,5 +6,24 @@ xcode_project: HelloWorld/HelloWorld.xcodeproj # path to your xcodeproj folder
 xcode_scheme: HelloWorld
 
 script:
-  xctool -project HelloWorld/HelloWorld.xcodeproj -scheme HelloWorld build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - set -o pipefail &&
+      xcodebuild
+        CODE_SIGNING_REQUIRED=NO
+        CODE_SIGN_IDENTITY=
+        PROVISIONING_PROFILE=
+        -sdk iphonesimulator
+        -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
+        -scheme "HelloWorld"
+        clean build test |
+        xcpretty
+    - set -o pipefail &&
+      xcodebuild
+        CODE_SIGNING_REQUIRED=NO
+        CODE_SIGN_IDENTITY=
+        PROVISIONING_PROFILE=
+        -sdk iphonesimulator
+        -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
+        -scheme "HelloWorld - Suite Two"
+        clean build test |
+      xcpretty
 
