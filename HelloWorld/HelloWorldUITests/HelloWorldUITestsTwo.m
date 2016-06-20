@@ -1,18 +1,18 @@
 //
-//  HelloWorldUITests.m
+//  HelloWorldUITestsTwo.m
 //  HelloWorldUITests
 //
-//  Created by Svante Paldan on 16/06/16.
+//  Created by Svante Paldan on 20/06/16.
 //  Copyright © 2016 Svante Paldan. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface HelloWorldUITests : XCTestCase
+@interface HelloWorldUITestsTwo : XCTestCase
 
 @end
 
-@implementation HelloWorldUITests
+@implementation HelloWorldUITestsTwo
 
 - (void)setUp {
     [super setUp];
@@ -23,7 +23,7 @@
     self.continueAfterFailure = NO;
     // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
     [[[XCUIApplication alloc] init] launch];
-    
+
     // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
 }
 
