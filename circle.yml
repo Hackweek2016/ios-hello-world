@@ -4,6 +4,11 @@ machine:
 general:
   build_dir: HelloWorld
 
+dependencies:
+  override:
+    - bundle install:
+        timeout: 180
+
 test:
   override:
     - set -o pipefail &&
