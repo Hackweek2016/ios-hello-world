@@ -11,7 +11,7 @@ before_install:
   - gem install fastlane --no-ri --no-rdoc --no-document
 
 script:
-  - travis/script.sh
+  - scripts/travis/script.sh
   - set -o pipefail &&
       xcodebuild
         CODE_SIGNING_REQUIRED=NO
@@ -35,5 +35,5 @@ script:
         xcpretty -r "html" -o "tests.html"
 
 after_success:
-  - travis/after_success_script.sh
+  - scripts/travis/after_success_script.sh
 
