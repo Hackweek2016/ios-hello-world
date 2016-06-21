@@ -6,7 +6,12 @@ before_script: cd HelloWorld
 notifications:
   email: false
 
+before_install:
+  - gem install xcov --no-ri --no-rdoc --no-document
+  - gem install fastlane --no-ri --no-rdoc --no-document
+
 script:
+  - travis/script.sh
   - set -o pipefail &&
       xcodebuild
         CODE_SIGNING_REQUIRED=NO
@@ -16,7 +21,7 @@ script:
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         -scheme "HelloWorld"
         clean build test |
-        xcpretty
+        xcpretty -r "html" -o "tests.html"
         
   - set -o pipefail &&
       xcodebuild
@@ -27,5 +32,8 @@ script:
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         -scheme "HelloWorld - Suite Two"
         clean build test |
-      xcpretty
+        xcpretty -r "html" -o "tests.html"
+
+after_success:
+  - travis/after_success_script.sh
 
