@@ -30,5 +30,4 @@ test:
       xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results_two.xml
  
   post:
-    - ./scripts/script.sh
-    - ./scripts/after_success_build.sh
+    - bundle exec fastlane ios test report_test_coverage 
